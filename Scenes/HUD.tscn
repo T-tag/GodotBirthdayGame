@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctb8li8rxdndn"]
+
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="1_v48vm"]
+
+[node name="Hud" type="CanvasLayer"]
+layer = 5
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 1.0
+offset_top = 620.0
+offset_right = 199.0
+offset_bottom = 647.0
+value = 50.0
+script = ExtResource("1_v48vm")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgrsaggu7d7pf"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_tudkw"]
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_tudkw")
+
+[node name="Label" type="Label" parent="."]
+process_mode = 2
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(13.8514, 13.9107)
+text = "GameOver"
+
+[node name="Restart" type="Button" parent="."]
+texture_filter = 1
+offset_left = 444.0
+offset_top = 298.0
+offset_right = 509.0
+offset_bottom = 329.0
+scale = Vector2(4.15636, 3.89977)
+text = "Restart"
+
+[node name="Rage" type="Button" parent="."]
+texture_filter = 1
+offset_left = 442.0
+offset_top = 435.0
+offset_right = 488.0
+offset_bottom = 466.0
+scale = Vector2(5.95963, 3.9368)
+text = "Rage"

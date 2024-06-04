@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1picg5kirvcv"]
+
+[ext_resource type="Script" path="res://Scripts/player.battle.gd" id="1_oj6ol"]
+[ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="2_267o6"]
+[ext_resource type="Script" path="res://Scripts/Hp display.gd" id="3_jkcms"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gcd7b"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_ptuo5"]
+resource_name = "Fade out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qi10o"]
+resource_name = "Fade to black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w3fuu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxclq"]
+_data = {
+"Fade out": SubResource("Animation_ptuo5"),
+"Fade to black": SubResource("Animation_qi10o"),
+"RESET": SubResource("Animation_w3fuu")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(232, 250)
+script = ExtResource("1_oj6ol")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-2.08616e-07, -2.08616e-07)
+scale = Vector2(0.0466667, 0.0466667)
+texture = ExtResource("2_267o6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_gcd7b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(232, 250)
+zoom = Vector2(2, 2)
+
+[node name="Hp display" type="Label" parent="."]
+offset_left = -56.0
+offset_top = 86.0
+offset_right = 9.0
+offset_bottom = 109.0
+script = ExtResource("3_jkcms")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -61.0
+offset_top = 81.0
+offset_right = 170.0
+offset_bottom = 206.0
+scale = Vector2(2.53233, 2.72029)
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qxclq")
+}
