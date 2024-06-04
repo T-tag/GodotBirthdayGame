@@ -72,6 +72,7 @@ scale = Vector2(0.0666667, 0.0666667)
 texture = ExtResource("3_aokfw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test Enemy"]
+position = Vector2(70, 0)
 shape = SubResource("CircleShape2D_ex3w2")
 
 [connection signal="body_entered" from="Test Enemy" to="Player" method="_on_test_enemy_body_entered"]
