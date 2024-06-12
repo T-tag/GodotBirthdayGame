@@ -41,10 +41,11 @@ func _on_test_enemy_body_entered(body):
 	# NOTE: Take 10 damage (just as an example)
 	currentHealth -= 10
 	healthChanged.emit()
+	$"../Hurt".play()
 
 	await TransitionScreen.on_transition_finished
 	get_tree().change_scene_to_file("res://Scenes/InBattle.tscn")
 
-	
 
-# ----
+
+

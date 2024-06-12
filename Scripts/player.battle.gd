@@ -29,3 +29,4 @@ func _input(event):
 	if event.is_action_pressed("Space"):
 		hp -= 20
 		print(hp)
+		$"../Hurt".play()
