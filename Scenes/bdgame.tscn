@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4einfo2da6lo"]
+[gd_scene load_steps=16 format=3 uid="uid://d4einfo2da6lo"]
 
 [ext_resource type="Texture2D" uid="uid://7rs48xch1f2w" path="res://SounEffects/School.png" id="1_42tb5"]
 [ext_resource type="Script" path="res://Scenes/bdgame.gd" id="1_awmp5"]
@@ -169,6 +169,11 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s53ie"]
 size = Vector2(55, 31)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_eks0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odhcn"]
+size = Vector2(1, 1)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_awmp5")
 
@@ -244,16 +249,15 @@ stream = ExtResource("7_8ip8k")
 
 [node name="TristanTalking" type="AudioStreamPlayer" parent="."]
 
-[node name="Test Enemy2" type="Area2D" parent="."]
-position = Vector2(156, 244)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(163, 249)
+scale = Vector2(17.1054, 16.7994)
 
-[node name="Sprite2D" type="Sprite2D" parent="Test Enemy2"]
-position = Vector2(1.45435e-05, -7.15256e-07)
-scale = Vector2(0.0666667, 0.0666667)
-texture = ExtResource("3_aokfw")
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("PlaceholderTexture2D_eks0k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test Enemy2"]
-shape = SubResource("CircleShape2D_ex3w2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_odhcn")
 
 [connection signal="body_entered" from="Test Enemy" to="Player" method="_on_test_enemy_body_entered"]
 [connection signal="body_shape_entered" from="SwitchToScene2" to="SwitchToScene2" method="_on_body_shape_entered"]
