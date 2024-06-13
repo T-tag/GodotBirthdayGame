@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2hqftarjwpyb"]
+
+[ext_resource type="Texture2D" uid="uid://dq6p8nu78tlr3" path="res://SounEffects/TextBox.png" id="1_jscet"]
+
+[node name="Dialog" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(578, 605)
+scale = Vector2(18.0625, 5.25)
+texture = ExtResource("1_jscet")
