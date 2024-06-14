@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4einfo2da6lo"]
+[gd_scene load_steps=17 format=3 uid="uid://d4einfo2da6lo"]
 
 [ext_resource type="Texture2D" uid="uid://7rs48xch1f2w" path="res://SounEffects/School.png" id="1_42tb5"]
 [ext_resource type="Script" path="res://Scenes/bdgame.gd" id="1_awmp5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/SceneSwitchTest.gd" id="4_u51qf"]
 [ext_resource type="AudioStream" uid="uid://e82j8u22j1qq" path="res://SounEffects/hitHurt.wav" id="5_apvh3"]
 [ext_resource type="AudioStream" uid="uid://cornbtqtymjgt" path="res://m1.ogg" id="7_8ip8k"]
+[ext_resource type="AudioStream" uid="uid://dxmjdqpaaq2ew" path="res://TristanTalk1.mp3" id="8_65sna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6ymn"]
 texture = ExtResource("1_42tb5")
@@ -149,21 +150,6 @@ sources/0 = SubResource("TileSetAtlasSource_l6ymn")
 [sub_resource type="CircleShape2D" id="CircleShape2D_nthqq"]
 radius = 7.0
 
-[sub_resource type="GDScript" id="GDScript_nike4"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-"
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ex3w2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s53ie"]
@@ -173,6 +159,9 @@ size = Vector2(55, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odhcn"]
 size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hls1b"]
+size = Vector2(1.22768, 1.19052)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_awmp5")
@@ -223,7 +212,6 @@ position_smoothing_enabled = true
 
 [node name="Test Enemy" type="Area2D" parent="."]
 position = Vector2(290, 244)
-script = SubResource("GDScript_nike4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Test Enemy"]
 position = Vector2(1.45435e-05, -7.15256e-07)
@@ -245,12 +233,18 @@ shape = SubResource("RectangleShape2D_s53ie")
 stream = ExtResource("5_apvh3")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_8ip8k")
+volume_db = -3.748
 
 [node name="TristanTalking" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_65sna")
+volume_db = 9.009
+pitch_scale = 1.43
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(163, 249)
+position = Vector2(161, 189)
 scale = Vector2(17.1054, 16.7994)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -259,5 +253,16 @@ texture = SubResource("PlaceholderTexture2D_eks0k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_odhcn")
 
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(-4.20958e-07, 0)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_hls1b")
+
 [connection signal="body_entered" from="Test Enemy" to="Player" method="_on_test_enemy_body_entered"]
 [connection signal="body_shape_entered" from="SwitchToScene2" to="SwitchToScene2" method="_on_body_shape_entered"]
+[connection signal="mouse_shape_exited" from="SwitchToScene2" to="." method="_on_switch_to_scene_2_mouse_shape_exited"]
+[connection signal="finished" from="TristanTalking" to="." method="_on_tristan_talking_finished"]
+[connection signal="body_shape_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_shape_exited"]
