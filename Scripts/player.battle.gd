@@ -26,7 +26,7 @@ func _input(event):
 	elif event.is_action_released("Sprint"):
 		speed = earlier_speed
 
-	if event.is_action_pressed("Space"):
+	if event.is_action_pressed("Enter"):
 		hp -= 20
 		print(hp)
 		$"../Hurt".play()

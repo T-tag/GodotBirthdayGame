@@ -11,7 +11,7 @@ func _process(_delta):
 	if $Music.playing == false:
 		$Music.play() 
 
-	if Input.is_action_just_pressed("Space") == true:
+	if Input.is_action_just_pressed("Enter") == true:
 		if IsInside == true:
 			$TristanTalking.play()
 			print("Gutday")
