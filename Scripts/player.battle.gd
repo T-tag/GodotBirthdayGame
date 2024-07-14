@@ -3,6 +3,7 @@ extends CharacterBody2D
 var hp = 100
 var earlier_speed = 60
 @export var speed = earlier_speed
+@export var Bullet : PackedScene
 
 func _ready():
 	print(hp)
@@ -10,6 +11,12 @@ func _ready():
 func _process(delta):
 	if hp == 0:
 		get_tree().paused = true
+
+func shoot():
+	print("bang")
+	var b = Bullet.instantiate()
+	add_child(b)
+	b.transform = $Muzzle.transform
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -30,3 +37,6 @@ func _input(event):
 		hp -= 20
 		print(hp)
 		$"../Hurt".play()
+
+	if Input.is_action_just_pressed("Shoot"):
+		shoot()

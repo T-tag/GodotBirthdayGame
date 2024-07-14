@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1picg5kirvcv"]
+[gd_scene load_steps=11 format=3 uid="uid://d1picg5kirvcv"]
 
 [ext_resource type="Script" path="res://Scripts/player.battle.gd" id="1_oj6ol"]
 [ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="2_267o6"]
 [ext_resource type="Script" path="res://Scripts/Hp display.gd" id="3_jkcms"]
 [ext_resource type="AudioStream" uid="uid://e82j8u22j1qq" path="res://SounEffects/hitHurt.wav" id="4_eje62"]
+[ext_resource type="PackedScene" uid="uid://cgsgrdbdilnxp" path="res://Scenes/bullet.tscn" id="5_6xkud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcd7b"]
 radius = 7.0
@@ -77,6 +78,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(232, 250)
 script = ExtResource("1_oj6ol")
+Bullet = ExtResource("5_6xkud")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(-2.08616e-07, -2.08616e-07)
@@ -85,6 +87,9 @@ texture = ExtResource("2_267o6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_gcd7b")
+
+[node name="Muzzle" type="Marker2D" parent="Player"]
+position = Vector2(0, -14)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(232, 250)
@@ -114,3 +119,5 @@ libraries = {
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_eje62")
+
+[node name="Bullet" parent="." instance=ExtResource("5_6xkud")]
