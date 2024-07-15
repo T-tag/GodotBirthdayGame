@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="3_aokfw"]
 [ext_resource type="Script" path="res://Scenes/SceneSwitchTest.gd" id="4_u51qf"]
 [ext_resource type="AudioStream" uid="uid://e82j8u22j1qq" path="res://SounEffects/hitHurt.wav" id="5_apvh3"]
-[ext_resource type="AudioStream" uid="uid://cornbtqtymjgt" path="res://m1.ogg" id="7_8ip8k"]
-[ext_resource type="AudioStream" uid="uid://dxmjdqpaaq2ew" path="res://TristanTalk1.mp3" id="8_65sna"]
+[ext_resource type="AudioStream" uid="uid://cornbtqtymjgt" path="res://Music/m1.ogg" id="7_8ip8k"]
+[ext_resource type="AudioStream" uid="uid://dxmjdqpaaq2ew" path="res://Music/TristanTalk1.mp3" id="8_65sna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6ymn"]
 texture = ExtResource("1_42tb5")

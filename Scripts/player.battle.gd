@@ -1,15 +1,18 @@
 extends CharacterBody2D
 
+
 var hp = 100
 var earlier_speed = 60
 @export var speed = earlier_speed
 @export var Bullet : PackedScene
 
 func _ready():
+	get_tree().paused = false
 	print(hp)
 	
 func _process(delta):
 	if hp == 0:
+		$"../GameOver".show()
 		get_tree().paused = true
 
 func shoot():

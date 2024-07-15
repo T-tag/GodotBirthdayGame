@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="4_obuto"]
 [ext_resource type="Script" path="res://Scenes/SceneSwitchTest.gd" id="5_2toqb"]
 [ext_resource type="AudioStream" uid="uid://e82j8u22j1qq" path="res://SounEffects/hitHurt.wav" id="6_aq8gl"]
-[ext_resource type="AudioStream" uid="uid://cornbtqtymjgt" path="res://m1.ogg" id="7_sao65"]
-[ext_resource type="AudioStream" uid="uid://dxmjdqpaaq2ew" path="res://TristanTalk1.mp3" id="8_enc3f"]
+[ext_resource type="AudioStream" uid="uid://t5kxler3e6el" path="res://Music/music1_spook_2.ogg" id="7_1ph87"]
+[ext_resource type="AudioStream" uid="uid://dxmjdqpaaq2ew" path="res://Music/TristanTalk1.mp3" id="8_enc3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6ymn"]
 texture = ExtResource("2_3fjvk")
@@ -235,9 +235,8 @@ stream = ExtResource("6_aq8gl")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("7_sao65")
-volume_db = -3.748
-pitch_scale = 0.25
+stream = ExtResource("7_1ph87")
+volume_db = 1.204
 
 [node name="TristanTalking" type="AudioStreamPlayer" parent="."]
 process_mode = 3

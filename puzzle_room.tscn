@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://brm1ssiyn07ed"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3f16u"]
+[ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="2_nnakg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gnnko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2qwm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g1mb"]
+radius = 7.0
+
+[node name="Puzzle room" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(221, 130)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_gnnko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_q2qwm")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(225, 250)
+scale = Vector2(1.84589, 2.10784)
+script = ExtResource("1_3f16u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-2.08616e-07, -2.08616e-07)
+scale = Vector2(0.0466667, 0.0466667)
+texture = ExtResource("2_nnakg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_4g1mb")

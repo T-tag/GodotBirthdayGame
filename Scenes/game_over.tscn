@@ -31,3 +31,6 @@ offset_right = 488.0
 offset_bottom = 466.0
 scale = Vector2(5.95963, 3.9368)
 text = "Rage"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Rage" to="." method="_on_rage_pressed"]
