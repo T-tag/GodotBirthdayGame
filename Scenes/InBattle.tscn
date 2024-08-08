@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://e82j8u22j1qq" path="res://SounEffects/hitHurt.wav" id="4_eje62"]
 [ext_resource type="PackedScene" uid="uid://cgsgrdbdilnxp" path="res://Scenes/bullet.tscn" id="5_6xkud"]
 [ext_resource type="PackedScene" uid="uid://cgrsaggu7d7pf" path="res://Scenes/game_over.tscn" id="6_ubk77"]
+[ext_resource type="PackedScene" uid="uid://clunfmb7vac6u" path="res://Scenes/mob.tscn" id="7_pqfls"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcd7b"]
 radius = 7.0
@@ -74,8 +75,6 @@ _data = {
 "RESET": SubResource("Animation_w3fuu")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qxtew"]
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -92,7 +91,7 @@ texture = ExtResource("2_267o6")
 shape = SubResource("CircleShape2D_gcd7b")
 
 [node name="Muzzle" type="Marker2D" parent="Player"]
-position = Vector2(0, -14)
+position = Vector2(9, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(232, 250)
@@ -107,10 +106,10 @@ script = ExtResource("3_jkcms")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 1
-offset_left = -61.0
-offset_top = 81.0
-offset_right = 170.0
-offset_bottom = 206.0
+offset_left = 13.0
+offset_top = 136.0
+offset_right = 244.0
+offset_bottom = 261.0
 scale = Vector2(2.53233, 2.72029)
 color = Color(0, 0, 0, 0)
 
@@ -123,19 +122,9 @@ libraries = {
 process_mode = 3
 stream = ExtResource("4_eje62")
 
-[node name="Bullet" parent="." instance=ExtResource("5_6xkud")]
-position = Vector2(276, 257)
-
 [node name="GameOver" parent="." instance=ExtResource("6_ubk77")]
 visible = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(327, 258)
-scale = Vector2(0.897471, 0.920007)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_qxtew")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(0.0466667, 0.0466667)
-texture = ExtResource("2_267o6")
+[node name="TestMob" parent="." instance=ExtResource("7_pqfls")]
+position = Vector2(374, 252)
+health = 80

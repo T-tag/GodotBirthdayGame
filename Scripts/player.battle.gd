@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var hp = 100
 var earlier_speed = 60
 @export var speed = earlier_speed
@@ -30,18 +29,17 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
-	
-	
-		# Get movement input
+	# Get movement input
 	velocity.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-  
+
+	# Rotate player  
 	if velocity != Vector2.ZERO:
 		rotation = velocity.angle()
 	
 	# Print the current rotation of the character in radians
-	print("Current rotation (radians): ", rotation)
-	print("Current rotation (degrees): ", rad_to_deg(rotation))
+	#print("Current rotation (radians): ", rotation)
+	#print("Current rotation (degrees): ", rad_to_deg(rotation))
 	
 	if event.is_action_pressed("Sprint"):
 		earlier_speed = speed
