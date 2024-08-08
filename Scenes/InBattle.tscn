@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1picg5kirvcv"]
+[gd_scene load_steps=13 format=3 uid="uid://d1picg5kirvcv"]
 
 [ext_resource type="Script" path="res://Scripts/player.battle.gd" id="1_oj6ol"]
 [ext_resource type="Texture2D" uid="uid://c1yn1nvym5nko" path="res://circle-white.png" id="2_267o6"]
@@ -74,6 +74,8 @@ _data = {
 "RESET": SubResource("Animation_w3fuu")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxtew"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -122,6 +124,18 @@ process_mode = 3
 stream = ExtResource("4_eje62")
 
 [node name="Bullet" parent="." instance=ExtResource("5_6xkud")]
+position = Vector2(276, 257)
 
 [node name="GameOver" parent="." instance=ExtResource("6_ubk77")]
 visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(327, 258)
+scale = Vector2(0.897471, 0.920007)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_qxtew")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.0466667, 0.0466667)
+texture = ExtResource("2_267o6")

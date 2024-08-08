@@ -18,9 +18,9 @@ func _process(delta):
 func shoot():
 	print("bang")
 	var b = Bullet.instantiate()
-	add_child(b)
-	b.transform = $Muzzle.transform
-
+	get_parent().add_child(b)
+	b.transform = $Muzzle.global_transform
+	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
@@ -30,6 +30,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
+	
+	
+		# Get movement input
+	velocity.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	velocity.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+  
+	if velocity != Vector2.ZERO:
+		rotation = velocity.angle()
+	
+	# Print the current rotation of the character in radians
+	print("Current rotation (radians): ", rotation)
+	print("Current rotation (degrees): ", rad_to_deg(rotation))
+	
 	if event.is_action_pressed("Sprint"):
 		earlier_speed = speed
 		speed = 120
